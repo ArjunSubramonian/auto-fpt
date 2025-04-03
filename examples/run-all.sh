@@ -1,0 +1,1 @@
+for f in subordination MP random-features anisotropic-MP ridge-regression-error; do python -m examples.$f; done
