@@ -1,3 +1,5 @@
+We welcome your contributions to and feedback on this tool!
+
 # Automatic Free Probability Theory (FPT) for Machine Learning
 
 ## Installing Requirements
