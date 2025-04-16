@@ -21,8 +21,6 @@ We provide the following examples in the `examples` folder:
 - `ridge-regression-error.py`: Script to test computation of fixed-point equations using free probability theory for generalization error of ridge regression.
 - `subordination.py`: Script to test computation of fixed-point equations using free probability theory for subordination.
 
-## (Coming Soon) auto-fpt Preprint
+## auto-fpt Preprint
 
-We overview the algorithms underlying `auto-fpt` and document the various techniques we leverage to make the computation of fixed-point equations more tractable, such as matrix scalarization, sparse block matrix inversion, and duplicate equation identification and pruning.
-
-Please cite your usage of this library using the following bib entry: [TBA].
+We overview the algorithms underlying `auto-fpt` and document the various techniques we leverage to make the computation of fixed-point equations more tractable, such as matrix scalarization, sparse block matrix inversion, and duplicate equation identification and pruning. Please find the preprint [here](https://arxiv.org/pdf/2504.10754). You may cite your usage of this library using the arXiv-generated bib entry.
