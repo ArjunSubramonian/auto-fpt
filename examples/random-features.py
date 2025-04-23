@@ -1,5 +1,6 @@
 """
-Synopsis: Script to test computation of fixed-point equations using free probability theory for generalization error of random features model.
+Synopsis: Script to test computation of fixed-point equations using FPT
+for generalization error of random features model.
 Author: Arjun Subramonian
 
 Run as `python -m examples.random-features' from within auto-fpt.
@@ -140,7 +141,7 @@ for it, eqn in enumerate(eqns):
         subs[eqn.lhs] = lambd * tau_2
     else:
         subs[eqn.lhs] = var_replacements[it]
-    
+
     if (i, j) not in [(Kinv_i, Kinv_j), (XTXKinv_i, XTXKinv_j)]:
         eliminate.append(subs[eqn.lhs])
 
@@ -150,10 +151,10 @@ new_eqns = []
 for it, eqn in enumerate([G[(Kinv_i, Kinv_j)], G[(XTXKinv_i, XTXKinv_j)]] + sorted(eqns, key=lambda x: (x.lhs.i, x.lhs.j))):
     i = eqn.lhs.i
     j = eqn.lhs.j
-    
+
     if it > 1 and (i, j) in [(Kinv_i, Kinv_j), (XTXKinv_i, XTXKinv_j)]:
         continue
-    
+
     n, d = fraction(eqn.rhs)
     re_eqn = (d * eqn.lhs - n).subs(subs)
     new_eqns.append(expand(simplify(re_eqn)))
@@ -167,7 +168,7 @@ for eqn in new_eqns:
     elim_cands = [v for v in eliminate if v in eqn.free_symbols]
     if len(elim_cands) == 0:
         continue
-    
+
     tgt = elim_cands[0]
     subs = {
         tgt: solve(eqn, tgt)[0]

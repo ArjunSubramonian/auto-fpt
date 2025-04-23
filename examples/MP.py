@@ -1,5 +1,6 @@
 """
-Synopsis: Script to test computation of fixed-point equations using free probability theory for Marchenko-Pastur (MP) law.
+Synopsis: Script to test computation of fixed-point equations using FPT
+for Marchenko-Pastur (MP) law.
 Author: Arjun Subramonian, Elvis Dohmatob
 
 Run as `python -m examples.MP' from within auto-fpt.
@@ -20,8 +21,7 @@ phi = Symbol(r"\phi", positive=True)
 # Form the expression of the resolvent.
 MP_expr = (Z.T * Z + Identity(d)).inv()
 
-# Compute a minimal linear pencil using NCAlgebra.
-# Q, (u, v) = compute_minimal_pencil(MP_expr)
+# Load minimal linear pencil precomputed using NCAlgebra.
 with open('examples/pencils/MP-pencil.pkl', 'rb') as f:
     Q, (u, v) = pkl.load(f)
 
@@ -37,5 +37,6 @@ j = np.flatnonzero(v)[0]
 # Get free probability equations defining the limiting value of the
 # trace of the resolvent. The normalize="full" option allows us to apply
 # the variance 1/(n*lambda) of the entries of the random matrix Z.
-eqns = calc(Q, random_matrices='Z', row_idx=i, col_idx=j, normalize='full', subs={d: n * phi}, verbose=1)
+eqns = calc(Q, random_matrices='Z', row_idx=i, col_idx=j, normalize='full',
+            subs={d: n * phi}, verbose=1)
 print(',\\\\\n'.join([latex(eqn) for eqn in eqns]))
