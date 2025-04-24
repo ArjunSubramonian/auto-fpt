@@ -1,5 +1,6 @@
 """
-Synopsis: Script to test computation of fixed-point equations using free probability theory for generalization error of ridge regression.
+Synopsis: Script to test computation of fixed-point equations using FPT
+for generalization error of ridge regression.
 Author: Arjun Subramonian
 
 Run as `python -m examples.ridge-regression-error' from within auto-fpt.
@@ -37,8 +38,9 @@ print(latex(Q))
 i = np.flatnonzero(u)[0]
 j = np.flatnonzero(v)[0]
 
-# Compute the fixed-point equations for the bias term using free probability theory.
-eqns = calc(Q, random_matrices='Z', row_idx=i, col_idx=j, normalize='full', subs={d: n * phi})
+# Compute the fixed-point equations for the bias term using FPT
+eqns = calc(Q, random_matrices='Z', row_idx=i, col_idx=j, normalize='full',
+            subs={d: n * phi})
 print(',\\\\\n'.join([latex(eqn) for eqn in eqns]))
 
 # Form the resolvent for the variance component of the generalization error.
@@ -58,6 +60,7 @@ print(latex(Q))
 i = np.flatnonzero(u)[0]
 j = np.flatnonzero(v)[0]
 
-# Compute the fixed-point equations for variance term using free probability theory.
-eqns = calc(Q, random_matrices='Z', row_idx=i, col_idx=j, normalize='full', subs={d: n * phi})
+# Compute the fixed-point equations for variance term using FPT.
+eqns = calc(Q, random_matrices='Z', row_idx=i, col_idx=j, normalize='full',
+            subs={d: n * phi})
 print(',\\\\\n'.join([latex(eqn) for eqn in eqns]))

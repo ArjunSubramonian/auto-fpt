@@ -17,6 +17,7 @@ We provide the following examples in the `examples` folder:
 
 - `MP.py`: Script to test computation of fixed-point equations using free probability theory for Marchenko-Pastur (MP) law.
 - `anisotropic-MP.py`: Script to test computation of fixed-point equations using free probability theory for anisotropic MP law.
+- `anisotropic-MP.ipynb`: Jupyter-notebook version  (better visualization of latex output, etc.)
 - `random-features.py`: Script to test computation of fixed-point equations using free probability theory for generalization error of random features model.
 - `ridge-regression-error.py`: Script to test computation of fixed-point equations using free probability theory for generalization error of ridge regression.
 - `subordination.py`: Script to test computation of fixed-point equations using free probability theory for subordination.

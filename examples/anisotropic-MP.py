@@ -20,8 +20,7 @@ phi = Symbol(r"\phi", positive=True)
 X = Z@Sigma_sqrt  # Design matrix
 expr = (X.T@X + Identity(d)).inv()  # Resolvent matrix
 
-# Compute linear pencil using NCAlgebra
-# Q, (u, v) = compute_minimal_pencil(expr)
+# Load minimal linear pencil precomputed using NCAlgebra
 with open('examples/pencils/anisotropic-MP-pencil.pkl', 'rb') as f:
     Q, (u, v) = pkl.load(f)
 
@@ -33,6 +32,6 @@ print('v:', v)
 row_idx, col_idx = np.argmax(u), np.argmax(v)
 
 # Get free probability equations defining the limiting value of the
-# trace of the resolvent. 
+# trace of the resolvent.
 eqns = calc(Q, random_matrices=["Z"], row_idx=row_idx, col_idx=col_idx, normalize="full", subs={d: n * phi})
 print(',\\\\\n'.join([latex(eqn) for eqn in eqns]))

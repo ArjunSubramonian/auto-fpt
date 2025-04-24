@@ -1,5 +1,6 @@
 """
-Synopsis: Script to test computation of fixed-point equations using free probability theory for subordination.
+Synopsis: Script to test computation of fixed-point equations using FPT
+for subordination.
 Author: Elvis Dohmatob, Arjun Subramonian
 
 Run as `python -m examples.subordination' from within auto-fpt.
@@ -33,9 +34,8 @@ M1 = X1.T@X1
 M2 = X2.T@X2
 M = M1 + M2
 
-# Compute minimal linear pencil of resolvent R of M using NCAlgebra
+# Load minimal linear pencil of resolvent R of M precomputed using NCAlgebra
 R = (M + Identity(d)).inv()
-# Q, (u, v) = compute_minimal_pencil(R)
 with open('examples/pencils/subordination-pencil.pkl', 'rb') as f:
     Q, (u, v) = pkl.load(f)
 
@@ -48,6 +48,6 @@ row_idx = np.flatnonzero(u)[0]
 col_idx = np.flatnonzero(v)[0]
 
 variances = {Z1: 1 / (n * lambd), Z2: 1 / (n * lambd)}
-eqns = calc(Q, random_matrices=["Z_1", "Z_2"], row_idx=row_idx, col_idx=col_idx, variances=variances,
-            subs={n1: n * p1, n2: n * p2, d: n * phi})
+eqns = calc(Q, random_matrices=["Z_1", "Z_2"], row_idx=row_idx, col_idx=col_idx,
+            variances=variances, subs={n1: n * p1, n2: n * p2, d: n * phi})
 print(',\\\\\n'.join([latex(eqn) for eqn in eqns]))
